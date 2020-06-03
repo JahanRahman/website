@@ -13,7 +13,9 @@ ui <-{
   fluidPage(tags$style('.container-fluid {
                              background-color: #FFFFF;
               }'),
-  tags$head(tags$meta(name="propeller", content="ca0b09f467b4d268dc540eb401e1429f")),
+  tags$head((HTML('<meta name="propeller" content="ca0b09f467b4d268dc540eb401e1429f">')),
+            HTML('<script data-ad-client="ca-pub-1262606844131429" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>')
+            ),
   withAnim(),
   navbarPage(title = "", theme = "shiny.css", 
     tabPanel(
