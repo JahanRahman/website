@@ -14,12 +14,12 @@ ui <-{
                              background-color: #FFFFF;
               }'),
   withAnim(),
-  htmlOutput('propeller'),
+  tags$meta(name="propeller", content="ca0b09f467b4d268dc540eb401e1429f"),
   navbarPage(title = "", theme = "shiny.css", 
     tabPanel(
       tags$div(id="hometab", tags$h4(style = "font-family:Courier;font-size: 25px", "Home")),
              tags$div(id = "title", tags$p(style = "font-family:Courier New;font-size: 140px;position:relative; left: 150px; top: 140px", "Grow to Give.")),
-             fluidRow(column(width = 12, tags$div(style = "position:relative; top:130px; left:580px", actionButton("shown", tags$b(style="font-family:Courier", "contribute NOW"))))),
+             fluidRow(column(width = 4, tags$div(style = "position:relative; top:130px; left:580px", id = 'videobutton', actionButton("shown", tags$b(style="font-family:Courier", "contribute NOW"))))),
              fluidRow(column(width = 12, tags$div(id = "subtitle", tags$p(style = "font-family:Courier New;font-size: 16px;position:relative; left: 165px; top:55px", "All AdSense profit from this site goes to initiatives combatting racial injustice.",  tags$b("You learn, you contribute."))))),
              ),
     
@@ -67,16 +67,13 @@ server<- function(input, output, session){
     print(test)
     test
   })
-  
-  output$propeller <- renderUI({
-    proptag<-HTML('<meta name="propeller" content="ca0b09f467b4d268dc540eb401e1429f">')
-    print(proptag)
-    proptag
-  })
+
   #animations
   animatetitle <-startAnim(session, id = 'title', "fadeInUp")
-  animatetitle <-startAnim(session, id = 'subtitle', "fadeInUp")
-  animatetitle <-startAnim(session, id = 'subtitle2', "fadeInUp")
+  animatesubtitle <-startAnim(session, id = 'subtitle', "fadeInUp")
+  animatesubtitle2 <-startAnim(session, id = 'subtitle2', "fadeInUp")
+  
+  animatebutton <-startAnim(session, id = 'videobutton', "fadeInUp")
   
   animatehome <-startAnim(session, id = 'hometab', "fadeInDown")
   animatelearn <-startAnim(session, id = 'learnmenu', "fadeInDown")
@@ -88,6 +85,7 @@ server<- function(input, output, session){
   hoveranimatedonate <- observe(addHoverAnim(session, 'donatemenu', 'pulse'))
   hoveranimatemore <- observe(addHoverAnim(session, 'moremenu', 'pulse'))
   
+  hoveranimatebutton <- observe(addHoverAnim(session, 'videobutton', 'pulse'))
   
 }
 
