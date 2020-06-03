@@ -12,6 +12,7 @@ library(shinyBS)
 ui <-{
   fluidPage(
   "Hello PropellerAds!",
+  tags$head(includeHTML(("adservice3.html"))),
   tags$head(includeHTML(("ad-sense.html"))),
   tags$style('.container-fluid {
                              background-color: #FFFFF;
@@ -19,6 +20,16 @@ ui <-{
   withAnim(),
   navbarPage(title = "", theme = "shiny.css", 
     tabPanel(
+      HTML('<div id="426231421">
+    <script type="text/javascript">
+        try {
+            window._mNHandle.queue.push(function (){
+                window._mNDetails.loadTag("426231421", "970x90", "426231421");
+            });
+        }
+        catch (error) {}
+    </script>
+</div>'),
       tags$div(id="hometab", tags$h4(style = "font-family:Courier;font-size: 25px", "Home")),
              tags$div(id = "title", tags$p(style = "font-family:Courier New;font-size: 140px;position:relative; left: 150px; top: 140px", "Grow to Give.")),
              fluidRow(column(width = 4, tags$div(style = "position:relative; top:130px; left:580px", id = 'videobutton', actionButton("shown", tags$b(style="font-family:Courier", "contribute NOW"))))),
