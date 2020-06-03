@@ -11,7 +11,7 @@ library(shinyBS)
 
 ui <-{
   fluidPage(
-  tags$head(includeHTML(("propeller.html"))),
+  "Hello Propeller Ads!",
   tags$style('.container-fluid {
                              background-color: #FFFFF;
               }'),
