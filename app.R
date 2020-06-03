@@ -11,8 +11,9 @@ library(shinyBS)
 
 ui <-{
   fluidPage(
-  tags$head(includeHTML(("ad-sense.html"))),
-  tags$script(source = "atag.js"),
+  tags$head(includeHTML(("adservice3.html"))), #.net bing yahoo site
+  tags$head(includeHTML(("ad-sense.html"))), #google adsense
+  tags$script(source = "atag.js"), #ad cash
   tags$style('.container-fluid {
                              background-color: #FFFFF;
               }'),
@@ -23,8 +24,17 @@ ui <-{
              tags$div(id = "title", tags$p(style = "font-family:Courier New;font-size: 140px;position:relative; left: 150px; top: 140px", "Grow to Give.")),
              fluidRow(column(width = 4, tags$div(style = "position:relative; top:130px; left:580px", id = 'videobutton', actionButton("shown", tags$b(style="font-family:Courier", "contribute NOW"))))),
              fluidRow(column(width = 12, tags$div(id = "subtitle", tags$p(style = "font-family:Courier New;font-size: 16px;position:relative; left: 165px; top:55px", "All AdSense profit from this site goes to initiatives combatting racial injustice.",  tags$b("You learn, you contribute."))))),
-             ),
-    
+      HTML('<div id="426231421">
+    <script type="text/javascript">
+        try {
+            window._mNHandle.queue.push(function (){
+                window._mNDetails.loadTag("426231421", "970x90", "426231421");
+            });
+        }
+        catch (error) {}
+    </script>
+</div>')
+      ),
     navbarMenu(tags$div(id = "learnmenu",tags$h4(style = "font-family:Courier;font-size: 25px", "Learn")),
                "----",
                tabPanel(tags$h4(style = "font-family:Courier;font-size: 18px", "Society")),
