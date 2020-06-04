@@ -8,7 +8,8 @@ library(data.table)
 library(shinyjs)
 library(shinyBS)
 
-load("/Users/jahanrahman/Desktop/development/processed.RData")
+#load("processed.RData")
+fread("/Users/jahanrahman/Desktop/development/processed.txt", stringsAsFactors = F, header = TRUE)
 
 ui <-{
   fluidPage(
