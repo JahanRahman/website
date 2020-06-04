@@ -8,6 +8,7 @@ library(data.table)
 library(shinyjs)
 library(shinyBS)
 
+load("/Users/jahanrahman/Desktop/development/processed.RData")
 
 ui <-{
   fluidPage(
@@ -34,8 +35,11 @@ ui <-{
     </script>
 </div>')
       ),
-    navbarMenu(tags$div(id = "learnmenu",tags$h4(style = "font-family:Courier;font-size: 25px", "Learn")),
-               "----"),
+    tabPanel(tags$div(id = "learnmenu",tags$h4(style = "font-family:Courier;font-size: 25px", "Learn")),
+             verbatimTextOutput("url"),
+             fluidRow(column(width = 1, offset= 10, actionButton("confirm", tags$div(style = "font-family:Courier;font-size: 15px", tags$b("View Selection"))))),
+             DT::dataTableOutput("learningresources"),
+             ),
     navbarMenu(tags$div(id="donatemenu",tags$h4(style = "font-family:Courier;font-size: 25px", "Donate")),
                "----",
                tabPanel(tags$h4(style = "font-family:Courier;font-size: 18px", "Organizations/Initiatives"),
@@ -56,11 +60,18 @@ ui <-{
                         ),
                "----")),
   bsModal("modalExample", 
-          title = tags$h3(style = "font-family:Courier; position:relative; left: 15px;font-size: 25px", "All ad revenue from this video goes towards supporting the causes listed. Hit close to play in the background. View on YouTube directly to maximize contribution. (source: Zoe Amira)"), 
-          "shown", # <----set the observer to the right button
+          title = tags$h3(style = "font-family:Courier", "All ad revenue from this video goes towards supporting the causes listed. Hit close to play in the background. View on YouTube directly to maximize contribution. (source: Zoe Amira)"), 
+          "shown", 
           size = "large",
           fluidRow(column(width = 5, offset = 2, tags$div(id= "videoelement", htmlOutput('vidframe'))))
-          )
+          ),
+  bsModal("selectoutput", 
+          title = tags$h3(style = "font-family:Courier", "Selected Entry"), 
+          'confirm',
+          size = "large",
+          fluidRow(column(width = 5, offset = 2, htmlOutput('selectedresource')))
+  ),
+  
   
   )
 }
@@ -68,11 +79,25 @@ ui <-{
   
 server<- function(input, output, session){
   output$vidframe <- renderUI({
-    test<-HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/bCgLa25fDHM?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
-    print(test)
+    test<-HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/bCgLa25fDHM?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', allowFullscreen = TRUE)
     test
   })
+  
+  
+  output$learningresources <-DT::renderDataTable({read_in}, selection="single", options = list(dom = 'tp'))
 
+  clicked <- eventReactive(input$learningresources_rows_selected,{
+    read_in[input$learningresources_rows_selected]
+  })
+  
+  #output$url <- renderText({paste0(clicked()[,2])})
+    
+  output$selectedresource <- renderUI({
+    link <- paste0(clicked()[,2])
+    output <- HTML(link)
+    output
+    })
+  
   #animations
   animatetitle <-startAnim(session, id = 'title', "fadeInUp")
   animatesubtitle <-startAnim(session, id = 'subtitle', "fadeInUp")
