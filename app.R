@@ -8,8 +8,8 @@ library(data.table)
 library(shinyjs)
 library(shinyBS)
 
-read_in <- fread("processed.txt", stringsAsFactors = F, header = TRUE, sep = "\t", quote = "")
-#load("processed.RData")
+#read_in <- fread("processed.txt", stringsAsFactors = F, header = TRUE, sep = "\t", quote = "")
+load("processed.RData")
 
 ui <-{
   fluidPage(
@@ -28,12 +28,12 @@ ui <-{
       br(),
              fluidRow(column(width = 12, tags$div(id = "title", tags$p(style = "font-family:Andale Mono;font-size: 140px;color: #000000; text-align: center", "Grow to Give.")))),
              fluidRow(column(width = 12,tags$div(id = "subtitle", tags$p(style = "font-family:Andale Mono;font-size: 17px; color: #000000; text-align: center", "All ad revenue from this site goes to initiatives combatting racial injustice.",  tags$b("You learn, you contribute."))))),
-             fluidRow(column(width = 12, offset = 5,tags$div(id = 'videobutton', actionButton("shown", tags$b(style="font-family:Andale Mono; font-size: 20px;", "contribute NOW"), style="color: #000000; background:rgb(0,0,0,0); border-color: #000000")))),
+             fluidRow(column(width = 3, offset = 5,tags$div(id = 'videobutton', actionButton("shown", tags$b(style="font-family:Andale Mono; font-size: 20px;", "contribute NOW"), style="color: #000000; background:rgb(0,0,0,0); border-color: #000000")))),
 
       ),
     tabPanel(tags$div(id = "learnmenu",tags$h4(style = "font-family:Andale Mono;font-size: 25px; color: #000000", "Learn")),
              verbatimTextOutput("url"),
-             fluidRow(column(width = 1, offset= 10,actionButton("confirm", tags$div(style = "font-family:Andale Mono;font-size: 15px; color: #FFFF00", tags$b("View Selection"))))),
+             fluidRow(column(width = 1, offset= 10, actionButton("confirm", tags$div(id = "confirmselection", style = "font-family: Andale Mono; font-size: 18px", tags$b("View Selection")), style="color: #000000; background:rgb(0,0,0,0); border-color: #000000"))),
              DT::dataTableOutput("learningresources"),
              ),
     navbarMenu(tags$div(id="donatemenu", tags$h4(style = "font-family:Andale Mono;font-size: 25px; color: #000000", "Donate")),
@@ -53,7 +53,7 @@ ui <-{
                tabPanel(tags$h4(style = "font-family:Andale Mono;font-size: 18px; color: #000000", "Feedback")),
                "----",
                tabPanel(tags$h4(style = "font-family:Andale Mono;font-size: 18px; color: #000000", "Proof of Donation"),
-                        tags$h4(style = "font-family:Andale Mono;font-size: 18px", "Proof of Donation will be posted here when enough ad revenue is generated to reach adservice payout minimums.")
+                        tags$h4(style = "font-family:Andale Mono;font-size: 18px; color: #000000", "Proof of Donation will be posted here when enough ad revenue is generated to reach payout minimum.")
                         ),
                "----")),
   bsModal("modalExample", 
@@ -113,7 +113,7 @@ server<- function(input, output, session){
   hoveranimatemore <- observe(addHoverAnim(session, 'moremenu', 'pulse'))
   
   hoveranimatebutton <- observe(addHoverAnim(session, 'videobutton', 'pulse'))
-  
+  hoveranimatebutton2 <- observe(addHoverAnim(session, 'confirmselection', 'pulse'))
 }
 
 shinyApp(ui=ui, server=server)
