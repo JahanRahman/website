@@ -1,16 +1,21 @@
 .navbar-default{
 	background: rgba(0,0,0,0) !important;
     background-size: contain;
-    border-style: none;
-    border-bottom: none;
-    
+    border-style: dotted dashed solid double;
+    border-color: black;
     
 
     
  }
 
 .navbar-nav li a:hover, .navbar-nav > .active > a{
-color: #FFFF00 !important;
-background: rgba(162,162,0, 30) !important;
+color: #9bacd8 !important;
+background-color: rgba(153,153,0,1) !important;
+border-radius: 10px 20px 20px 20px; 
+
 
 }
+
+
+
+
