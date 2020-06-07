@@ -19,53 +19,53 @@ ui <-{
   withAnim(),
   theme = "shiny.css",
   tags$script(includeHTML("propeller.html")),
-  navbarPage(id = "navbarpage", title = tags$h4(style = "font-family:Raleway-Regular, Fallback, sans-serif;font-size: 25px"),
+  navbarPage(id = "navbarpage", title = tags$h4(style = "font-family:Raleway-Light, Fallback, sans-serif;font-size: 25px"),
     tabPanel(
-      tags$div(id="hometab", tags$h4(style = "font-family:Raleway-Regular, Fallback, sans-serif; font-size: 25px; color: #000000", "Home")),
+      tags$div(id="hometab", tags$h4(style = "font-family:Raleway-Light, Fallback, sans-serif; font-size: 25px; color: #000000", "Home")),
       br(),
       br(),
       br(),
       br(),
       br(),
-             fluidRow(column(width = 12, tags$div(id = "title", tags$p(style = "font-family:Raleway-Regular, Fallback, sans-serif;font-size: 140px;color: #000000; text-align: center", "Grow to Give.")))),
-             fluidRow(column(width = 12,tags$div(id = "subtitle", tags$p(style = "font-family:Raleway-Regular, Fallback, sans-serif;font-size: 17px; color: #000000; text-align: center", "All ad revenue from this site goes to initiatives combatting racial injustice.",  tags$b("You learn, you contribute."))))),
-             fluidRow(column(width = 3, offset= 5, tags$div(id = 'videobutton', actionButton("shown", tags$b(style="font-family:Raleway-Regular, Fallback, sans-serif; font-size: 20px;", "contribute NOW"), style="color: #000000; background:rgb(0,0,0,0); border-color: #000000")))),
+             fluidRow(column(width = 12, tags$div(id = "title", tags$p(style = "font-family:Raleway-Light, Fallback, sans-serif;font-size: 140px;color: #000000; text-align: center", "Grow to Give.")))),
+             fluidRow(column(width = 12,tags$div(id = "subtitle", tags$p(style = "font-family:Raleway-Light, Fallback, sans-serif;font-size: 17px; color: #000000; text-align: center", "All ad revenue from this site goes to initiatives combatting racial injustice.",  tags$b("You learn, you contribute."))))),
+             fluidRow(column(width = 2, offset= 5, tags$div(id = 'videobutton', actionButton("shown", tags$b(style="font-family:Raleway-Light, Fallback, sans-serif; font-size: 20px;", "contribute NOW"), style="color: #000000; background:rgb(0,0,0,0); border-color: #000000")))),
 
       ),
-    tabPanel(tags$div(id = "learnmenu",tags$h4(style = "font-family:Raleway-Regular, Fallback, sans-serif;font-size: 25px; color: #000000", "Learn")),
+    tabPanel(tags$div(id = "learnmenu",tags$h4(style = "font-family:Raleway-Light, Fallback, sans-serif;font-size: 25px; color: #000000", "Learn")),
              verbatimTextOutput("url"),
-             fluidRow(column(width = 1, offset= 10, actionButton("confirm", tags$div(id = "confirmselection", style = "font-family: Raleway-Regular, Fallback, sans-serif; font-size: 18px", tags$b("View Selection")), style="color: #000000; background:rgb(0,0,0,0); border-color: #000000"))),
+             fluidRow(column(width = 1, offset= 10, actionButton("confirm", tags$div(id = "confirmselection", style = "font-family: Raleway-Light, Fallback, sans-serif; font-size: 18px", tags$b("View Selection")), style="color: #000000; background:rgb(0,0,0,0); border-color: #000000"))),
              tags$br(),
-             tags$div(style = "background-color: rgb(210,210,0, 1)",DT::dataTableOutput("learningresources")),
+             tags$div(style = "font-family:Raleway-Light, Fallback, sans-serif",DT::dataTableOutput("learningresources")),
              ),
-    tabPanel(tags$div(id = "sharetab", tags$h4(style = "font-family:Raleway-Regular, Fallback, sans-serif;font-size: 25px; color: #000000", "Share"))),
-    tabPanel(tags$div(id="visualizetab", tags$h4(style = "font-family:Raleway-Regular, Fallback, sans-serif;font-size: 25px; color: #000000", "Visualize"))
+    tabPanel(tags$div(id = "sharetab", tags$h4(style = "font;-family:Raleway-Light, Fallback, sans-serif;font-size: 25px; color: #000000", "Share"))),
+    tabPanel(tags$div(id="visualizetab", tags$h4(style = "font-family:Raleway-Light, Fallback, sans-serif;font-size: 25px; color: #000000", "Visualize"))
              
     ),
-    tabPanel(tags$div(id="donatemenu", tags$h4(style = "font-family:Raleway-Regular, Fallback, sans-serif;font-size: 25px; color: #000000", "Donate"))
+    tabPanel(tags$div(id="donatemenu", tags$h4(style = "font-family:Raleway-Light, Fallback, sans-serif;font-size: 25px; color: #000000", "Donate"))
              
              
              ),
     
     
-    navbarMenu(tags$div(id="moremenu", tags$h4(style = "font-family:Raleway-Regular, Fallback, sans-serif;font-size: 25px; color: #000000", "More")),
+    navbarMenu(tags$div(id="moremenu", tags$h4(style = "font-family:Raleway-Light, Fallback, sans-serif;font-size: 25px; color: #000000", "More")),
                "----",
-               tabPanel(tags$h4(style = "font-family:Raleway-Regular, Fallback, sans-serif;font-size: 18px; color: #000000", "Sharing")),
+               tabPanel(tags$h4(style = "font-family:Raleway-Light, Fallback, sans-serif;font-size: 18px; color: #000000", "Sharing")),
                "----",
-               tabPanel(tags$h4(style = "font-family:Raleway-Regular, Fallback, sans-serif;font-size: 18px; color: #000000", "Additional Resources")),
+               tabPanel(tags$h4(style = "font-family:Raleway-Light, Fallback, sans-serif;font-size: 18px; color: #000000", "Additional Resources")),
                "----",
-               tabPanel(tags$h4(style = "font-family:Raleway-Regular, Fallback, sans-serif;font-size: 18px; color: #000000", "Proof of Donation"),
-                        tags$h4(style = "font-family:Raleway-Regular, Fallback, sans-serif;font-size: 18px; color: #000000", "Proof of Donation will be posted here when enough ad revenue is generated to reach payout minimum.")
+               tabPanel(tags$h4(style = "font-family:Raleway-Light, Fallback, sans-serif;font-size: 18px; color: #000000", "Proof of Donation"),
+                        tags$h4(style = "font-family:Raleway-Light, Fallback, sans-serif;font-size: 18px; color: #000000", "Proof of Donation will be posted here when enough ad revenue is generated to reach payout minimum.")
                         ),
                "----")),
   bsModal("modalExample", 
-          title = tags$h3(style = "font-family:Raleway-Regular, Fallback, sans-serif", "All ad revenue from this video goes towards supporting the causes listed. Hit close to play in the background. View on YouTube directly to maximize contribution. (source: Zoe Amira)"), 
+          title = tags$h3(style = "font-family:Raleway-Light, Fallback, sans-serif", "All ad revenue from this video goes towards supporting the causes listed. Hit close to play in the background. View on YouTube directly to maximize contribution. (source: Zoe Amira)"), 
           "shown", 
           size = "Large",
           fluidRow(column(width = 5, tags$div(id= "videoelement", htmlOutput('vidframe'))))
           ),
   bsModal("selectoutput", 
-          title = tags$h3(style = "font-family:Raleway-Regular, Fallback, sans-serif", "Selected Entry"), 
+          title = tags$h3(style = "font-family:Raleway-Light, Fallback, sans-serif", "Selected Entry"), 
           'confirm',
           size = "large",
           fluidRow(column(width = 5, offset = 2, htmlOutput('selectedresource')))
